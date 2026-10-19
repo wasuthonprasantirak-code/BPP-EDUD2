@@ -1,0 +1,19 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // System KPIs and fast analytical aggregates
+    match /system_aggregates/{docId} {
+      allow read, write: if true;
+    }
+
+    // Standard rule allowing read/write access to reports
+    match /activity_reports/{reportId} {
+      allow read, write: if true;
+    }
+    
+    // Fallback for any other collections
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

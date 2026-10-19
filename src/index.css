@@ -1,0 +1,1360 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Prompt', 'Sukhumvit Set', -apple-system, BlinkMacSystemFont, 'Kanit', 'Noto Sans Thai', 'Segoe UI', Roboto, sans-serif;
+  --font-serif: 'Sarabun', 'TH Sarabun New', 'TH SarabunPSK', sans-serif;
+}
+
+:root {
+  font-size: 14.5px;
+  line-height: 1.45;
+  word-break: normal;
+  overflow-wrap: break-word;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Small mobile devices (< 400px) */
+@media (max-width: 399px) {
+  :root, html {
+    font-size: 12px;
+  }
+}
+
+/* Mobile & Phablet (400px - 639px) */
+@media (min-width: 400px) and (max-width: 639px) {
+  :root, html {
+    font-size: 12.75px;
+  }
+}
+
+/* Mobile & Smartphone screens (< 640px) */
+@media (max-width: 639px) {
+  #gis-map-cta-card,
+  #gis-map-subtext {
+    display: none !important;
+  }
+}
+
+/* Tablet screens (640px - 1023px, iPad, Android tablets) */
+@media (min-width: 640px) and (max-width: 1023px) {
+  :root, html {
+    font-size: 14px;
+  }
+  
+  .typo-app-subtext,
+  .tablet-text-12 {
+    font-size: 12px !important;
+  }
+
+  #gis-map-subtext {
+    font-size: 8.5px !important;
+    line-height: 1.35 !important;
+  }
+}
+
+/* Desktop screens (>= 1024px) */
+@media (min-width: 1024px) {
+  :root, html {
+    font-size: 17.5px;
+  }
+
+  #gis-map-subtext {
+    font-size: 13.5px !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root, html {
+    font-size: 18.5px;
+  }
+}
+
+@media (min-width: 1536px) {
+  :root, html {
+    font-size: 19.5px;
+  }
+}
+
+@media (min-width: 1920px) {
+  :root, html {
+    font-size: 20px;
+  }
+}
+
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+  height: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overscroll-behavior-y: none;
+  overscroll-behavior-x: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+@supports (-webkit-touch-callout: none) {
+  /* iOS / iPadOS Safari dynamic viewport height fix */
+  html, body, #root {
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Touch Momentum & Hardware Acceleration for iPad / Mobile Safari */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* iPad Specific Touch Optimization and Smoothness */
+@media (pointer: coarse) {
+  /* Prevent context menu lag on double tap and enhance touch response */
+  a, button, select, input, [role="button"] {
+    touch-action: manipulation;
+  }
+}
+
+/* GPU acceleration only for explicitly animated components, preventing iPad WebKit VRAM exhaustion */
+.hardware-accel, 
+.motion-safe-gpu {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Ensure smooth touch scrolling on iOS and iPad Safari, and ClearType rendering on Windows */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+:root, html, body, #root, button, input, select, textarea, optgroup {
+  font-family: 'Prompt', 'Sukhumvit Set', -apple-system, BlinkMacSystemFont, 'Kanit', 'Noto Sans Thai', 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Custom Sleek Scrollbar for Windows Desktop & Modern Browsers (Edge, Chrome, Firefox) */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #94a3b8;
+}
+
+/* Custom scrollbar style that is subtle on touch screens */
+@media (max-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.3);
+    border-radius: 9999px;
+  }
+}
+
+.overflow-y-auto, .overflow-x-auto, .overflow-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+img {
+  content-visibility: auto;
+}
+
+.sarabun-font,
+.sarabun-font * {
+  font-family: 'Sarabun', 'TH Sarabun New', 'TH SarabunPSK', 'Leelawadee UI', 'Segoe UI', Tahoma, sans-serif !important;
+  line-height: 1.35 !important;
+}
+
+/* Ensure printable document sheets and A4 modals preserve exact 1:1 baseline proportions for PDF/PNG export and print */
+.a4-paper-container,
+.a4-paper,
+.a4-page,
+.a4-paper-sheet,
+#a4-print-area,
+#executive-summary-print-container {
+  font-size: 16px;
+  line-height: 1.25;
+  font-family: 'Sarabun', 'TH Sarabun New', 'TH SarabunPSK', sans-serif !important;
+}
+
+/* Force prevent text inflation / font boosting in Safari/Chrome on iPad & mobile devices */
+.a4-page,
+.a4-page *,
+.a4-paper,
+.a4-paper *,
+.a4-paper-sheet,
+.a4-paper-sheet *,
+.a4-paper-container,
+.a4-paper-container *,
+#a4-print-area,
+#a4-print-area *,
+#executive-summary-print-container,
+#executive-summary-print-container * {
+  font-family: 'Sarabun', 'TH Sarabun New', 'TH SarabunPSK', sans-serif !important;
+  -webkit-text-size-adjust: none !important;
+  text-size-adjust: none !important;
+  -moz-text-size-adjust: none !important;
+  -ms-text-size-adjust: none !important;
+  box-sizing: border-box !important;
+}
+
+/* ==========================================================================
+   A4 DOCUMENT PC STANDARD LOCK (มาตรฐานหน้ากระดาษ A4 ทุกบรรทัดตามมุมมอง PC)
+   Enforces identical layout across PC, Tablet, and Smartphone (Portrait & Landscape)
+   ========================================================================== */
+.a4-page,
+.a4-paper,
+#a4-print-area {
+  font-size: 16px !important;
+  line-height: 1.25 !important;
+  width: 794px !important;
+  min-width: 794px !important;
+  max-width: 794px !important;
+  height: 1123px !important;
+  min-height: 1123px !important;
+  max-height: 1123px !important;
+  font-family: 'Sarabun', 'TH Sarabun New', 'TH SarabunPSK', sans-serif !important;
+}
+
+/*
+ * PC Reference Baseline: 1rem = 17.5px
+ * We explicitly lock all Tailwind rem-based utility classes inside the A4 sheet
+ * to their exact PC pixel values, ensuring that mobile/tablet root font-size media queries
+ * cannot alter spacing, gaps, margins, or padding in any way.
+ */
+.a4-page .space-y-0\.5 > :not([hidden]) ~ :not([hidden]),
+.a4-paper .space-y-0\.5 > :not([hidden]) ~ :not([hidden]),
+#a4-print-area .space-y-0\.5 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 2.1875px !important;
+}
+
+.a4-page .space-y-1 > :not([hidden]) ~ :not([hidden]),
+.a4-paper .space-y-1 > :not([hidden]) ~ :not([hidden]),
+#a4-print-area .space-y-1 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 4.375px !important;
+}
+
+.a4-page .space-y-1\.5 > :not([hidden]) ~ :not([hidden]),
+.a4-paper .space-y-1\.5 > :not([hidden]) ~ :not([hidden]),
+#a4-print-area .space-y-1\.5 > :not([hidden]) ~ :not([hidden]) {
+  margin-top: 6.5625px !important;
+}
+
+.a4-page .pl-4,
+.a4-paper .pl-4,
+#a4-print-area .pl-4 {
+  padding-left: 17.5px !important;
+}
+
+.a4-page .gap-4,
+.a4-paper .gap-4,
+#a4-print-area .gap-4 {
+  gap: 17.5px !important;
+}
+
+.a4-page .gap-6,
+.a4-paper .gap-6,
+#a4-print-area .gap-6 {
+  gap: 26.25px !important;
+}
+
+.a4-page .gap-1,
+.a4-paper .gap-1,
+#a4-print-area .gap-1 {
+  gap: 4.375px !important;
+}
+
+.a4-page .gap-1\.5,
+.a4-paper .gap-1\.5,
+#a4-print-area .gap-1\.5 {
+  gap: 6.5625px !important;
+}
+
+.a4-page .gap-2,
+.a4-paper .gap-2,
+#a4-print-area .gap-2 {
+  gap: 8.75px !important;
+}
+
+.a4-page .gap-2\.5,
+.a4-paper .gap-2\.5,
+#a4-print-area .gap-2\.5 {
+  gap: 10.9375px !important;
+}
+
+.a4-page .px-12,
+.a4-paper .px-12,
+#a4-print-area .px-12 {
+  padding-left: 52.5px !important;
+  padding-right: 52.5px !important;
+}
+
+.a4-page .pt-0\.5,
+.a4-paper .pt-0\.5,
+#a4-print-area .pt-0\.5 {
+  padding-top: 2.1875px !important;
+}
+
+.a4-page .pt-1,
+.a4-paper .pt-1,
+#a4-print-area .pt-1 {
+  padding-top: 4.375px !important;
+}
+
+.a4-page .pb-0\.5,
+.a4-paper .pb-0\.5,
+#a4-print-area .pb-0\.5 {
+  padding-bottom: 2.1875px !important;
+}
+
+.a4-page .mt-1,
+.a4-paper .mt-1,
+#a4-print-area .mt-1 {
+  margin-top: 4.375px !important;
+}
+
+.a4-page .mb-1\.5,
+.a4-paper .mb-1\.5,
+#a4-print-area .mb-1\.5 {
+  margin-bottom: 6.5625px !important;
+}
+
+.a4-page .leading-snug,
+.a4-paper .leading-snug,
+#a4-print-area .leading-snug {
+  line-height: 1.375 !important;
+}
+
+.a4-page .leading-normal,
+.a4-paper .leading-normal,
+#a4-print-area .leading-normal {
+  line-height: 1.5 !important;
+}
+
+.a4-page .leading-relaxed,
+.a4-paper .leading-relaxed,
+#a4-print-area .leading-relaxed {
+  line-height: 1.625 !important;
+}
+
+.a4-page .leading-tight,
+.a4-paper .leading-tight,
+#a4-print-area .leading-tight {
+  line-height: 1.25 !important;
+}
+
+/* ==========================================
+   SYSTEM TYPOGRAPHY STANDARDS & CARD STYLING (มาตรฐานขนาดตัวอักษร การ์ด และระยะห่าง)
+   ========================================== */
+
+@keyframes tabFadeIn {
+  from {
+    opacity: 0.88;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-tab-fade {
+  animation: tabFadeIn 0.15s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.typo-app-h1 {
+  @apply text-lg sm:text-xl lg:text-[33px] font-black text-slate-900 tracking-tight leading-snug lg:whitespace-nowrap lg:overflow-hidden lg:text-ellipsis;
+}
+
+/* PC View (>= 1024px) Typography Global Standards: Perfect Equal Scale */
+@media (min-width: 1024px) {
+  .typo-app-h1,
+  main h1:not(.no-h1-override):not(.banner-main-title):not(.banner-station-title):not(#main-plan-hero-title):not(.a4-page *):not(.a4-paper *):not(#executive-summary-print-container *) {
+    font-size: 33px !important;
+    line-height: 1.25 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  main h1:not(.no-h1-override):not(.banner-main-title):not(.banner-station-title):not(#main-plan-hero-title):not(.a4-page *):not(.a4-paper *):not(#executive-summary-print-container *) span {
+    font-size: inherit !important;
+    white-space: nowrap !important;
+  }
+
+  /* Ensure Grand Royal Patronage Plan Banner never truncates or cuts off */
+  #grand-royal-patronage-banner,
+  #grand-royal-patronage-banner h1,
+  #grand-royal-patronage-banner p,
+  #main-plan-hero-title,
+  .banner-station-title,
+  .banner-main-title,
+  .banner-title-part1,
+  .banner-title-part2,
+  .banner-sub-desc,
+  .banner-sub-part1,
+  .banner-sub-part2 {
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    text-overflow: unset !important;
+    word-break: normal !important;
+  }
+
+  @media (min-width: 640px) {
+    #main-plan-hero-title,
+    #main-plan-hero-title > span {
+      font-size: 29px !important;
+    }
+  }
+  @media (max-width: 639px) {
+    #main-plan-hero-title,
+    #main-plan-hero-title > span {
+      font-size: 20px !important;
+    }
+  }
+
+  /* Equalized PC Section Headers H2 (20px, font-extrabold) */
+  .typo-app-h2:not(.no-h2-override):not(.text-white):not([class*="text-white"]):not(.text-slate-100):not(.text-slate-200):not(.text-amber-100):not(.text-indigo-100):not(.a4-page *):not(.a4-paper *):not(#executive-summary-print-container *),
+  h2.typo-app-h2:not(.no-h2-override):not(.text-white):not([class*="text-white"]):not(.text-slate-100):not(.text-slate-200):not(.text-amber-100):not(.text-indigo-100):not(.a4-page *):not(.a4-paper *):not(#executive-summary-print-container *),
+  main h2:not(.no-h2-override):not(.text-white):not([class*="text-white"]):not(.text-slate-100):not(.text-slate-200):not(.text-amber-100):not(.text-indigo-100):not(.a4-page *):not(.a4-paper *):not(#executive-summary-print-container *) {
+    font-size: 20px !important;
+    line-height: 1.35 !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+  }
+
+  /* Equalized PC Subtext / Section Descriptions (13px, font-medium, text-slate-500) */
+  .typo-app-subtext,
+  p.typo-app-subtext,
+  main div > p.text-slate-500:not(.a4-page *):not(.a4-paper *):not(#executive-summary-print-container *) {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    font-weight: 500 !important;
+    color: #64748b !important;
+  }
+}
+
+.typo-app-h2 {
+  @apply text-base sm:text-lg lg:text-2xl font-extrabold text-slate-900 tracking-tight leading-snug;
+}
+
+.typo-app-h3 {
+  @apply text-sm sm:text-base lg:text-lg font-bold text-slate-900 leading-snug;
+}
+
+.typo-app-chart-title {
+  @apply text-xs sm:text-[13.5px] lg:text-base font-black text-indigo-950 tracking-tight flex items-center gap-2;
+}
+
+.typo-app-body {
+  @apply text-sm lg:text-base font-normal text-slate-700 leading-relaxed;
+}
+
+.typo-app-subtext {
+  @apply text-xs lg:text-sm font-medium text-slate-500 leading-normal;
+}
+
+.typo-app-badge {
+  @apply text-xs font-extrabold tracking-wide uppercase;
+}
+
+.typo-app-stat-value {
+  @apply text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-slate-900;
+}
+
+/* 2. Unified Card & Container Surface Utility Classes (ขอบการ์ดมีความละมุนเท่ากันทุกใบ) */
+.app-card-surface {
+  @apply bg-white rounded-2xl border border-slate-200/90 shadow-2xs hover:shadow-xs transition-all duration-200 p-5 sm:p-6;
+}
+
+.app-card-hero {
+  @apply bg-white rounded-3xl border border-slate-200/90 shadow-sm p-6 sm:p-8;
+}
+
+/* 3. Standard A4 Printable & Executive Summary Classes (Sarabun Font) */
+.typo-doc-title {
+  @apply text-base sm:text-lg font-black text-slate-900 tracking-tight leading-snug;
+}
+
+.typo-doc-subtitle {
+  @apply text-[11px] sm:text-xs font-extrabold text-indigo-950 tracking-wide;
+}
+
+.typo-doc-section {
+  @apply text-xs font-black text-slate-900 tracking-tight;
+}
+
+.typo-doc-body {
+  @apply text-[10px] sm:text-[11px] font-medium text-slate-800 leading-snug;
+}
+
+.typo-doc-kpi-val {
+  @apply text-base sm:text-lg font-black tracking-tight;
+}
+
+.typo-doc-table-header {
+  @apply text-[10px] font-black text-white uppercase tracking-wider;
+}
+
+.typo-doc-table-cell {
+  @apply text-[10px] font-medium text-slate-800 leading-snug;
+}
+
+.typo-doc-caption {
+  @apply text-[9.5px] font-bold text-slate-600;
+}
+
+@media print {
+  :root, html {
+    font-size: 16px !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .no-print-bg {
+    background: transparent !important;
+    padding: 0 !important;
+    position: static !important;
+    overflow: visible !important;
+  }
+
+  #executive-summary-print-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 0 !important;
+  }
+
+  .a4-page,
+  .a4-paper,
+  #a4-print-area,
+  .print-page {
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    margin: 0 auto !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: #ffffff !important;
+    box-sizing: border-box !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+}
+
+/* ==========================================
+   4. LANDSCAPE MOBILE & TABLET RESPONSIVE RULES (มาตรฐานสากลการจัดวางแนวนอน)
+   ========================================== */
+
+/* Mobile Landscape (Screen height <= 520px or landscape phone) */
+@media (orientation: landscape) and (max-height: 520px) {
+  .app-card-surface {
+    padding: 0.75rem 1rem !important;
+  }
+  
+  .app-card-hero {
+    padding: 1rem 1.25rem !important;
+  }
+
+  .typo-app-h1 {
+    font-size: 1.25rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .typo-app-h2 {
+    font-size: 1.1rem !important;
+  }
+
+  .typo-app-h3 {
+    font-size: 0.95rem !important;
+  }
+
+  /* Compact scrollable content areas in mobile landscape */
+  .landscape-compact-scroll {
+    max-height: calc(100vh - 100px) !important;
+    overflow-y: auto !important;
+  }
+
+  /* 2-column landscape grid auto fit */
+  .grid-landscape-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* ==========================================
+   5. SMARTPHONE (MOBILE PORTRAIT) OPTIMIZATION RULES (< 640px)
+   ========================================== */
+@media (max-width: 639px) {
+  /* Prevent horizontal layout breakage while allowing smooth vertical scrolling */
+  body, #root {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  main {
+    max-width: 100vw;
+    overflow-x: hidden;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+  }
+
+  /* Compact Card Padding on Smartphones */
+  .app-card-surface {
+    padding: 0.85rem 0.95rem !important;
+    border-radius: 1rem !important;
+  }
+
+  .app-card-hero {
+    padding: 1rem 1.1rem !important;
+    border-radius: 1.25rem !important;
+  }
+
+  /* Optimized Typography Scale on Smartphones to prevent text overflow */
+  .typo-app-h1 {
+    font-size: clamp(14.5px, 4.4vw, 17.5px) !important;
+    line-height: 1.32 !important;
+    word-break: break-word !important;
+    white-space: normal !important;
+  }
+
+  .typo-app-h2,
+  h2.typo-app-h2 {
+    font-size: clamp(13px, 3.8vw, 15.5px) !important;
+    line-height: 1.35 !important;
+    word-break: break-word !important;
+  }
+
+  .typo-app-h3,
+  h3.typo-app-h3 {
+    font-size: clamp(11.75px, 3.4vw, 13.5px) !important;
+    line-height: 1.35 !important;
+    word-break: break-word !important;
+  }
+
+  .typo-app-chart-title {
+    font-size: 11.5px !important;
+    line-height: 1.35 !important;
+  }
+
+  .typo-app-body {
+    font-size: 11.5px !important;
+    line-height: 1.45 !important;
+  }
+
+  .typo-app-subtext {
+    font-size: 10px !important;
+    line-height: 1.35 !important;
+  }
+
+  .typo-app-stat-value {
+    font-size: 1.35rem !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Filter and Action Buttons on Smartphone */
+  button.typo-app-button,
+  .mobile-compact-btn {
+    font-size: 11px !important;
+    padding: 0.35rem 0.6rem !important;
+  }
+
+  /* Prevent awkward truncate/overflows in metric chips */
+  .mobile-tight-text {
+    font-size: 10.5px !important;
+    line-height: 1.3 !important;
+  }
+}
+
+/* ==========================================
+   6. TABLET (640px – 1023px) UNIFIED TYPOGRAPHY & OVERFLOW STANDARDS (มาตรฐานการจัดวางมุมมองแท็บเล็ต)
+   ========================================== */
+@media (min-width: 640px) and (max-width: 1023px) {
+  /* Prevent horizontal layout breakage on Tablet */
+  body, #root, main {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  /* 1. Unified Tablet Main Page Title H1 (18px, font-black) */
+  .typo-app-h1:not(#main-plan-hero-title),
+  h1.banner-main-title:not(#main-plan-hero-title),
+  main h1:not(.no-h1-override):not(#main-plan-hero-title):not(.a4-page *):not(.a4-paper *):not(#executive-summary-print-container *) {
+    font-size: 18px !important;
+    line-height: 1.35 !important;
+    font-weight: 900 !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+    display: block !important;
+  }
+
+  .banner-title-part1,
+  .banner-title-part2 {
+    font-size: 18px !important;
+    font-weight: 900 !important;
+    white-space: normal !important;
+    display: inline !important;
+  }
+
+  /* 2. Unified Tablet Section Headers H2 (16.5px, font-extrabold) - Equal Size for All Headers */
+  .typo-app-h2,
+  h2.typo-app-h2,
+  main h2:not(.no-h2-override):not(.a4-page *):not(.a4-paper *):not(#executive-summary-print-container *):not(.text-white):not([style*="color: #ffffff"]):not([style*="color: white"]):not(.text-white *) {
+    font-size: 16.5px !important;
+    line-height: 1.35 !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+  }
+
+  main h2:not(.no-h2-override):not(.a4-page *):not(.a4-paper *):not(#executive-summary-print-container *) span {
+    font-size: inherit !important;
+    white-space: normal !important;
+  }
+
+  /* 3. Unified Tablet Card & Widget Headers H3 (14px, font-bold) */
+  .typo-app-h3,
+  h3.typo-app-h3,
+  main h3:not(.no-h3-override):not(.a4-page *):not(.a4-paper *):not(#executive-summary-print-container *):not(.text-white):not([style*="color: #ffffff"]):not([style*="color: white"]):not(.text-white *) {
+    font-size: 14px !important;
+    line-height: 1.35 !important;
+    font-weight: 700 !important;
+    color: #0f172a !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+  }
+
+  main h3:not(.no-h3-override):not(.a4-page *):not(.a4-paper *):not(#executive-summary-print-container *) span {
+    font-size: inherit !important;
+    white-space: normal !important;
+  }
+
+  /* 4. Unified Tablet Subtitle / Description / Subtext (11.5px, font-medium, text-slate-500) - Equal Size for All Descriptions */
+  .typo-app-subtext:not(.whitespace-nowrap),
+  .banner-sub-desc:not(.whitespace-nowrap),
+  p.typo-app-subtext:not(.whitespace-nowrap),
+  main p.text-slate-500:not(.whitespace-nowrap):not(.a4-page *):not(.a4-paper *):not(#executive-summary-print-container *),
+  main p.text-slate-600:not(.whitespace-nowrap):not(.a4-page *):not(.a4-paper *):not(#executive-summary-print-container *) {
+    font-size: 11.5px !important;
+    line-height: 1.45 !important;
+    font-weight: 500 !important;
+    color: #64748b !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+  }
+
+  #gis-map-subtext {
+    font-size: 8.5px !important;
+    line-height: 1.35 !important;
+  }
+
+  /* 5. Unified Tablet Chart & Category Titles */
+  .typo-app-chart-title {
+    font-size: 13.5px !important;
+    line-height: 1.35 !important;
+    font-weight: 800 !important;
+  }
+
+  /* 6. Tablet Card Surface Padding & Balance */
+  .app-card-surface {
+    padding: 1.15rem 1.25rem !important;
+    border-radius: 1rem !important;
+  }
+
+  .app-card-hero {
+    padding: 1.25rem 1.4rem !important;
+    border-radius: 1.25rem !important;
+  }
+}
+
+/* Ensure smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Leaflet GIS Map Styling */
+.leaflet-container {
+  width: 100% !important;
+  height: 100% !important;
+  font-family: 'Prompt', 'Sukhumvit Set', -apple-system, BlinkMacSystemFont, 'Kanit', sans-serif !important;
+  background-color: #e5e7eb !important;
+}
+
+/* Hide scrollbars for chrome, safari, firefox, edge */
+.no-scrollbar::-webkit-scrollbar {
+  display: none !important;
+}
+.no-scrollbar {
+  -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;  /* Firefox */
+}
+
+.leaflet-tile {
+  image-rendering: auto;
+}
+
+.leaflet-pane {
+  z-index: 400;
+}
+
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 900;
+}
+
+/* Applied styles from Focus Mode element selection */
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) {
+  color: #d6c5c5 !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > h2:nth-of-type(1) {
+  color: #ffffff !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > h2:nth-of-type(1) {
+  color: #ffffff !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > h2:nth-of-type(1) {
+  color: #ffffff !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(5) {
+  font-size: 13.0625px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > h2:nth-of-type(1) {
+  color: #ffffff !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > p:nth-of-type(1) {
+  font-size: 9.5px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > p:nth-of-type(1) {
+  font-size: 9.5px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > p:nth-of-type(1) {
+  font-size: 11.25px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > h1:nth-of-type(1) {
+  font-size: 17px !important;
+  color: #e2e4e9 !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) {
+  display: none !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) {
+  display: none !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > aside:nth-of-type(1) > nav:nth-of-type(1) {
+  font-size: 12px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > p:nth-of-type(1) {
+  font-size: 16px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > p:nth-of-type(1) > span:nth-of-type(1) {
+  font-size: 9px !important;
+  margin-left: 0px !important;
+  margin-top: 0px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div[id^="report-sheet-"]:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > p:nth-of-type(1),
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div#report-sheet-REP-SHEET-7133:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > p:nth-of-type(1) {
+  margin-top: -8px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div[id^="report-sheet-"]:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(3) > p:nth-of-type(1),
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div#report-sheet-REP-SHEET-7133:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(3) > p:nth-of-type(1) {
+  height: 20.559px !important;
+  margin-top: -6px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div[id^="report-sheet-"]:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5) > h4:nth-of-type(1),
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div#report-sheet-REP-SHEET-7133:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5) > h4:nth-of-type(1) {
+  padding-bottom: 6px !important;
+  margin-left: -10px !important;
+  margin-top: -13px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1) {
+  display: none !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(2) > div:nth-of-type(1) > h3:nth-of-type(1) > span:nth-of-type(1) {
+  font-size: 16.9375px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5) > div:nth-of-type(1) > div:nth-of-type(1) > h3:nth-of-type(1) > span:nth-of-type(1) {
+  font-size: 16.9375px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > h3:nth-of-type(1) {
+  font-size: 17.5px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > p:nth-of-type(1) {
+  font-size: 14px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > p:nth-of-type(1) {
+  font-size: 10px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > select:nth-of-type(1) {
+  font-size: 11.625px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > select:nth-of-type(1) {
+  font-size: 13.625px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div#report-sheet-REP-SHEET-7136:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(1) > p:nth-of-type(1),
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div[id^="report-sheet-"] > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(1) > p:nth-of-type(1) {
+  line-height: 21.5625px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div#report-sheet-REP-SHEET-7136:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(3) > p:nth-of-type(1),
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div[id^="report-sheet-"] > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(3) > p:nth-of-type(1) {
+  margin-top: -7px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) {
+  width: 156.873px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div#report-sheet-REP-SHEET-7137:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div#a4-print-area:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5) > h4:nth-of-type(1),
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div[id^="report-sheet-"] > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div#a4-print-area:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5) > h4:nth-of-type(1) {
+  margin-top: -8px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > p:nth-of-type(1) {
+  font-size: 12px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div#report-sheet-REP-SHEET-7131:nth-of-type(7) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(3) > p:nth-of-type(1),
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div[id^="report-sheet-"] > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(3) > p:nth-of-type(1) {
+  margin-top: -11px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(4) > div#report-sheet-REP-SHEET-7178:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(3) > p:nth-of-type(1),
+div#report-sheet-REP-SHEET-7178 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(3) > p:nth-of-type(1) {
+  margin-top: -7px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div#report-sheet-REP-SHEET-7241:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > p:nth-of-type(1),
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div[id^="report-sheet-"] > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > p:nth-of-type(1) {
+  margin-left: -27px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div#report-sheet-REP-SHEET-7454:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(3) > p:nth-of-type(1) {
+  margin-top: -8px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div#report-sheet-REP-SHEET-7461:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div#a4-print-area:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > p:nth-of-type(1) {
+  margin-top: -11px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(4) > div#report-sheet-REP-SHEET-7468:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div#a4-print-area:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > p:nth-of-type(1) {
+  margin-top: -11px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > h1:nth-of-type(1) {
+  font-size: 19px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div#report-sheet-REP-SHEET-7461:nth-of-type(8) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > h4:nth-of-type(1) {
+  margin-top: -14px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > p:nth-of-type(1) {
+  font-size: 18px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div#report-sheet-REP-SHEET-7466:nth-of-type(6) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(4) > div:nth-of-type(2) > div:nth-of-type(3) > p:nth-of-type(1) {
+  margin-top: -9px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > p:nth-of-type(1) {
+  font-size: 12.5px !important;
+}
+
+#hero-banner-realtime-subtext {
+  display: none !important;
+}
+
+/* Portrait, Tablet & PC responsive typography for Hero Banner */
+@media (max-width: 1023px) {
+  #hero-banner-royal-dedication > span:first-child {
+    font-size: 12px !important;
+  }
+}
+@media (min-width: 1024px) {
+  #hero-banner-royal-dedication > span:first-child {
+    font-size: 15px !important;
+  }
+}
+
+@media (max-width: 639px) {
+  div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > p:nth-of-type(1) {
+    font-size: 10.25px !important;
+  }
+  div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > h2:nth-of-type(1) {
+    font-size: 11px !important;
+  }
+  div#root:nth-of-type(1) > div:nth-of-type(1) > header:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > h2:nth-of-type(1) {
+    font-size: 8px !important;
+  }
+  #hero-banner-royal-dedication > span:nth-of-type(1) {
+    font-size: 10px !important;
+  }
+  #hero-banner-royal-dedication > span:nth-of-type(2) {
+    font-size: 9px !important;
+  }
+  #main-plan-hero-title,
+  #main-plan-hero-title > span {
+    font-size: 20px !important;
+  }
+}
+/* Tablet Portrait */
+@media (min-width: 640px) and (max-width: 1023px) and (orientation: portrait) {
+  #hero-banner-royal-dedication > span:nth-of-type(2) {
+    font-size: 10.5px !important;
+  }
+}
+/* Tablet Landscape */
+@media (min-width: 640px) and (max-width: 1024px) and (orientation: landscape) {
+  #hero-banner-royal-dedication > span:nth-of-type(2) {
+    font-size: 13.25px !important;
+  }
+}
+/* Width fallback for Tablet Portrait vs Landscape */
+@media (min-width: 640px) and (max-width: 834px) {
+  #hero-banner-royal-dedication > span:nth-of-type(2) {
+    font-size: 10.5px !important;
+  }
+}
+@media (min-width: 835px) and (max-width: 1024px) {
+  #hero-banner-royal-dedication > span:nth-of-type(2) {
+    font-size: 13.25px !important;
+  }
+}
+@media (min-width: 1025px) {
+  #hero-banner-royal-dedication > span:nth-of-type(2) {
+    font-size: 13.5px !important;
+  }
+}
+
+/* Hero Banner Report QR Code Card Title Responsive Size */
+#hero-banner-report-qrcode-card > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2) {
+  font-size: 15px;
+}
+@media (min-width: 640px) and (max-width: 1024px) {
+  #hero-banner-report-qrcode-card > div:nth-of-type(2) > div:nth-of-type(1) > span:nth-of-type(2) {
+    font-size: 14px !important;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  #hero-banner-royal-dedication > span {
+    line-height: 1.45 !important;
+  }
+}
+
+/* Tablet (iPad Portrait & Landscape) Optimization for Single-Screen View without Horizontal Scroll */
+@media (min-width: 640px) and (max-width: 1024px) {
+  /* Prevent horizontal scroll wrappers from breaking out or forcing unnecessary overflow */
+  .overflow-x-auto table,
+  table {
+    min-width: 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Compact table cell paddings & text sizes for portrait tablet view */
+  table th,
+  table td {
+    padding-left: 0.35rem !important;
+    padding-right: 0.35rem !important;
+    padding-top: 0.35rem !important;
+    padding-bottom: 0.35rem !important;
+    font-size: 11.5px !important;
+  }
+
+  /* Compact forced minimum widths inside tables on portrait tablet */
+  table td .min-w-\[180px\],
+  table td .min-w-\[200px\],
+  table th .min-w-\[180px\],
+  table th .min-w-\[200px\],
+  table .min-w-\[768px\],
+  table .min-w-\[580px\] {
+    min-width: 0 !important;
+  }
+
+  /* Compact grid column gaps and padding on tablet portrait */
+  .tablet-card-compact {
+    padding: 0.875rem !important;
+  }
+
+  /* Tighten main content container horizontal padding so tables & grids fit in single screen */
+  main {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  /* Section Headers H2 on tablet portrait view (15.5px) */
+  .typo-app-h2:not(.no-h2-override):not(.text-white):not([class*="text-white"]):not(.text-slate-100):not(.text-slate-200):not(.text-amber-100):not(.text-indigo-100):not(.a4-page *):not(.a4-paper *):not(#executive-summary-print-container *),
+  h2.typo-app-h2:not(.no-h2-override):not(.text-white):not([class*="text-white"]):not(.text-slate-100):not(.text-slate-200):not(.text-amber-100):not(.text-indigo-100):not(.a4-page *):not(.a4-paper *):not(#executive-summary-print-container *),
+  main h2:not(.no-h2-override):not(.text-white):not([class*="text-white"]):not(.text-slate-100):not(.text-slate-200):not(.text-amber-100):not(.text-indigo-100):not(.a4-page *):not(.a4-paper *):not(#executive-summary-print-container *) {
+    font-size: 15.5px !important;
+    line-height: 1.35 !important;
+  }
+
+  /* Main Hero Title on tablet portrait view (29px and restricted width) */
+  #main-plan-hero-title {
+    font-size: 29px !important;
+    width: 360.5px !important;
+    max-width: 360.5px !important;
+  }
+}
+
+/* Turbo Speed Booster Styles */
+.turbo-boost, .turbo-boost * {
+  animation-duration: 0ms !important;
+  transition-duration: 0ms !important;
+  animation-delay: 0ms !important;
+  transition-delay: 0ms !important;
+}
+
+/* Strategic Dashboard Theme & Tablet Enhancements */
+.hero-royal-mesh {
+  background: radial-gradient(120% 120% at 90% 10%, #6d28d9 0%, #4c1d95 45%, #2e1065 100%);
+}
+
+.gold-shimmer-border {
+  box-shadow: 0 0 0 1px rgba(245, 158, 11, 0.25), 0 20px 40px -15px rgba(46, 16, 101, 0.35);
+}
+
+.strategy-card {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.strategy-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -8px rgba(76, 29, 149, 0.12);
+}
+
+/* Tablet (iPad) Optimization for Main Viewport */
+@media (min-width: 640px) and (max-width: 1024px) {
+  .tablet-card-compact {
+    padding: 1rem !important;
+  }
+  
+  .tablet-grid-kpi {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  }
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div#report-sheet-REP-SHEET-8253:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > span:nth-of-type(6) {
+  font-size: 12.0625px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > h3:nth-of-type(1) {
+  font-size: 18px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > h3:nth-of-type(1) {
+  font-size: 18px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > h3:nth-of-type(1) {
+  font-size: 18px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > h3:nth-of-type(1) {
+  font-size: 18px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div#report-sheet-REP-SHEET-8731:nth-of-type(13) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(3) > p:nth-of-type(1) {
+  width: 660.547px !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4) > div#report-sheet-REP-SHEET-11112:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(3) > p:nth-of-type(1),
+div#report-sheet-REP-SHEET-11112 > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(3) > p:nth-of-type(1) {
+  width: 648.556px !important;
+}
+
+
+/* ซ่อนปุ่มเปลี่ยนแบนเนอร์เมื่อทำการเผยแพร่ระบบ (Published Mode / Shared View) เพื่อไม่ให้ผู้ใช้งานแก้ไข */
+body.is-published div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div#grand-royal-patronage-full-banner:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1),
+[data-published="true"] div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div#grand-royal-patronage-full-banner:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1),
+body.is-published #grand-royal-patronage-full-banner .banner-customizer-btn-container,
+[data-published="true"] #grand-royal-patronage-full-banner .banner-customizer-btn-container,
+body.is-published .banner-customizer-btn-container,
+[data-published="true"] .banner-customizer-btn-container,
+body.is-published div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > header:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1),
+[data-published="true"] div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > header:nth-of-type(1) > div:nth-of-type(2) > button:nth-of-type(1),
+body.is-published .header-banner-customizer-btn,
+[data-published="true"] .header-banner-customizer-btn,
+body.is-published #header-change-banner-btn,
+[data-published="true"] #header-change-banner-btn {
+  display: none !important;
+}
+
+/* World-class main content layout redesign (Focus Mode target) */
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) {
+  background: radial-gradient(circle at 100% 0%, rgba(243, 244, 246, 0.7) 0%, rgba(248, 250, 252, 1) 100%) !important;
+  scroll-behavior: smooth !important;
+}
+
+/* School rankings table column proportional distribution (Focus Mode) */
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(3) > div:nth-of-type(1) > table:nth-of-type(1) {
+  width: 100% !important;
+  min-width: 760px !important;
+  table-layout: fixed !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(3) > div:nth-of-type(1) > table:nth-of-type(1) > thead:nth-of-type(1) > tr:nth-of-type(1) > th:nth-of-type(1) {
+  width: 6% !important;
+  min-width: 56px !important;
+  text-align: center !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(3) > div:nth-of-type(1) > table:nth-of-type(1) > thead:nth-of-type(1) > tr:nth-of-type(1) > th:nth-of-type(2) {
+  width: 32% !important;
+  min-width: 220px !important;
+  text-align: left !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(3) > div:nth-of-type(1) > table:nth-of-type(1) > thead:nth-of-type(1) > tr:nth-of-type(1) > th:nth-of-type(3) {
+  width: 11% !important;
+  min-width: 95px !important;
+  text-align: center !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(3) > div:nth-of-type(1) > table:nth-of-type(1) > thead:nth-of-type(1) > tr:nth-of-type(1) > th:nth-of-type(4) {
+  width: 16% !important;
+  min-width: 150px !important;
+  text-align: left !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(3) > div:nth-of-type(1) > table:nth-of-type(1) > thead:nth-of-type(1) > tr:nth-of-type(1) > th:nth-of-type(5) {
+  width: 11% !important;
+  min-width: 95px !important;
+  text-align: center !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(3) > div:nth-of-type(1) > table:nth-of-type(1) > thead:nth-of-type(1) > tr:nth-of-type(1) > th:nth-of-type(6) {
+  width: 11% !important;
+  min-width: 105px !important;
+  text-align: center !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4) > div:nth-of-type(3) > div:nth-of-type(1) > table:nth-of-type(1) > thead:nth-of-type(1) > tr:nth-of-type(1) > th:nth-of-type(7) {
+  width: 13% !important;
+  min-width: 135px !important;
+  text-align: center !important;
+}
+
+/* Metric card typography enhancement for clear number with comma display (Focus Mode) */
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) {
+  font-variant-numeric: tabular-nums !important;
+}
+
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(4) > div#report-sheet-REP-SHEET-11485:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(5) > h4:nth-of-type(1) {
+  margin-left: -11px;
+  margin-top: -9px;
+}
+
+
+/* Tablet view font size adjustment for selected element (Focus Mode) */
+div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > p:nth-of-type(1) {
+  font-size: 9.5px;
+}
+
+@media (min-width: 640px) and (max-width: 1024px) {
+  div#root:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > main:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > div:nth-of-type(3) > div:nth-of-type(1) > div:nth-of-type(1) > div:nth-of-type(2) > p:nth-of-type(1),
+  #gis-map-subtext {
+    font-size: 9.5px !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
